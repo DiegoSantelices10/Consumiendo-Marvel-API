@@ -11,42 +11,53 @@ export function HeroCard({route}){
 URL= `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${nombre}&ts=1&apikey=47133e255c6b14d78ebbc8188beb3815&hash=9cb5f40bfeb3aa1cc189b0de44b6460b`
 
 useEffect(() =>{ 
-  const fetch = async()=>{
-      const result = await axios(URL)
+  const fetch = ()=>{
+      axios.get(URL).then(response => {setQuery(response.data.data.results)}).catch(err => console.log(err))
      // console.log(result.data.data.results)
-      setQuery(result.data.data.results)
     }
-
 fetch()
-}, [])
+}, [route])
+
+
+
     return (
       <NativeBaseProvider>
         <ScrollView>
-      <Box
+          {query.map( item => (
+      <Box key={item.id}
       rounded="lg"
       overflow="hidden"
-      width="100%"
+      width="80%"
       shadow={1}
+      mb={5}
+      left={10}
       _light={{ backgroundColor: 'gray.50' }}
-      _dark={{ backgroundColor: 'gray.700' }}
+      _dark={{ backgroundColor: 'black' }}
     >
-{ query.map( item => (
-      <Box>
-        <Heading key={item.id}>{item.name}</Heading>
+      <Box backgroundColor={"black"}
+      >
+        <Heading key={item}
+        textAlign="center"
+        fontSize={20}
+        color={"white"}
+        >{item.name}</Heading>
         <AspectRatio ratio={16 / 9}>
           <Image
             source={{uri:`${item.thumbnail.path}.${item.thumbnail.extension}`}}
             alt="image"
-            size="80%"
+            
+            
           />
         </AspectRatio>
-        <Text>{item.description}</Text>
+        <Text
+        textAlign="center" 
+        p={2}
+        color={"white"}>{item.description}</Text>
       </Box>
-    
-   )) }
 
 
     </Box>
+   )) }
     </ScrollView>
     </NativeBaseProvider>
     )
