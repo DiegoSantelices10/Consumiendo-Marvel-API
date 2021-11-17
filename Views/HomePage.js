@@ -3,17 +3,17 @@ import {ImageBackground, StyleSheet, Text} from 'react-native'
 import { NativeBaseProvider, View, Input, VStack,  Center, Heading,Button, Box, Image } from "native-base"
 
 
-function HomePage({setHero, navigation}) {
+function HomePage(navigation) {
   const [input, setInput] = useState("");
 
     return (
       <NativeBaseProvider>
       <View style={styles.container}>
-      <ImageBackground source={require('./assets/img/fondoPantalla1.jpg')} resizeMode="cover" style={styles.image}>
+      <ImageBackground source={require('../assets/img/fondoPantalla1.jpg')} resizeMode="cover" style={styles.image}>
       <VStack width="90%" space={2}>
         <Box bg="#000000" mt={114}  height={320} width={425} opacity='0.7'>
         <Center  top={3}>
-          <Image source={require('./assets/img/Logos-World-Marvel-Studios.png')} 
+          <Image source={require('../assets/img/Logos-World-Marvel-Studios.png')} 
           size={150} alt="logo" resizeMode="cover" width="90%" />
         <Heading color="#ffffff" fontSize="xl">Busca Tu Personaje Marvel</Heading>
         <Input

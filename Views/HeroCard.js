@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 export function HeroCard({route}){
+  
   const publickey = '47133e255c6b14d78ebbc8188beb3815';
   const [query, setQuery] = useState([]) 
   const nombre = `${route.params?.input}`
