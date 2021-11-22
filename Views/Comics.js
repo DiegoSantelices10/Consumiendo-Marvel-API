@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import s from "../Style/Style";
 import {
-  Center,
-  Text,
-  Box,
-  Stack,
-  AspectRatio,
-  Image,
-  Heading,
-  HStack,
+  VStack,
+  Box, AspectRatio,
+  Divider,
   NativeBaseProvider,
   ScrollView,
+  Image,
+  Heading,
+  Text
 } from "native-base";
 import axios from "axios";
+import { useState, useEffect } from "react";
+
 
 export default function Comics() {
   const publickey = "47133e255c6b14d78ebbc8188beb3815";
@@ -37,8 +38,12 @@ export default function Comics() {
         {query.map((item) => (
           <Box
             key={item.id}
+            rounded="lg"
             overflow="hidden"
-            width="100%"
+            width="80%"
+            shadow={1}
+            mb={5}
+            left={10}
             _light={{ backgroundColor: "gray.50" }}
             _dark={{ backgroundColor: "black" }}
           >
@@ -53,9 +58,6 @@ export default function Comics() {
               </Heading>
               <AspectRatio ratio={16 / 9}>
                 <Image
-                width="80%"
-                ml= {16}
-                
                   source={{
                     uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
                   }}
