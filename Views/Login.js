@@ -22,8 +22,6 @@ import * as AuthSession from 'expo-auth-session';
 export default function Login({}) {
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId: '666050719355-lu03rb227b3ldbbgaercq4akem7g7cc3.apps.googleusercontent.com'
-    
-  
   });
 
   React.useEffect(() => {
