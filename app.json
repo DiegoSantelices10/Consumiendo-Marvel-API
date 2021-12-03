@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "MarvelApp",
-    "slug": "MarvelApp",
+    "name": "Ejercicios-ReactNative",
+    "owner": "@dinho1010",
+    "slug": "Ejercicios-ReactNative",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
