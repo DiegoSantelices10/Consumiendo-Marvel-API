@@ -121,5 +121,18 @@ export default {
     top: 0,
     right: 0,
     bottom: 0
+  },
+  buttonSingIn: {
+    top: 200,
+    width: 360,
+    marginLeft: 32
+  },
+
+  userImagenLogin: {
+    height: 130,
+    resizeMode: "cover",
+    width: 360,
+    marginLeft: 31
+
   }
 };
