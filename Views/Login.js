@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ImageBackground } from "react-native";
 import {
   Text,
@@ -15,22 +15,20 @@ import * as RootNavigation from "./RootNavigation";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import HomePage from "./HomePage";
-import * as AuthSession from 'expo-auth-session';
+import * as AuthSession from "expo-auth-session";
 
-
-
-export default function Login({}) {
+export default function Login() {
   const [request, response, promptAsync] = Google.useAuthRequest({
-    expoClientId: '666050719355-lu03rb227b3ldbbgaercq4akem7g7cc3.apps.googleusercontent.com'
+    expoClientId:
+      "666050719355-lu03rb227b3ldbbgaercq4akem7g7cc3.apps.googleusercontent.com",
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (response?.type === "success") {
       console.log(response);
-      RootNavigation.navigate("HomePage" , {auth: response.authentication})
+      RootNavigation.navigate("HomePage", { auth: response.authentication });
     }
   }, [response]);
-
 
   return (
     <NativeBaseProvider>
@@ -48,13 +46,22 @@ export default function Login({}) {
         </Box>
 
         <Box>
-          <Button style={s.buttonSingIn}
-           
+         
+          <Button
+            style={s.buttonSingIn}
             title="Login"
             onPress={() => {
               promptAsync();
             }}
-          >Sign in</Button>
+          >
+            Sign In With Google
+          </Button>
+          <Image
+            style={s.googleIcon}
+            source={require("../assets/img/iconogoogle.png")}
+            alt="Alternate Text"
+            
+          />
         </Box>
       </ImageBackground>
     </NativeBaseProvider>

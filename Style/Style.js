@@ -1,4 +1,5 @@
 import { Center } from "native-base";
+import { position, textAlign } from "styled-system";
 
 export default {
   input: {
@@ -123,9 +124,20 @@ export default {
     bottom: 0
   },
   buttonSingIn: {
-    top: 200,
+    top: 160,
+    height: 60,
     width: 360,
-    marginLeft: 32
+    marginLeft: 32,
+    backgroundColor: "#000F74",
+    fontSize: "14"
+  },
+
+  googleIcon: {
+ top: 111,
+ width: 40,
+ height:40,
+ position: "relative",
+ left: 45
   },
 
   userImagenLogin: {

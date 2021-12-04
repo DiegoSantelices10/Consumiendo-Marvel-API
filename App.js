@@ -50,7 +50,7 @@ function Menu(props) {
       </View>
       <DrawerMenu iconName='home' titleName='Home' navigation={() => props.navigation.navigate('HomePage')} />
       <DrawerMenu iconName='user' titleName='Comics' navigation={() => props.navigation.navigate('Comics')} />
-      <DrawerMenu titleName='Login' navigation={() => props.navigation.navigate('Login')} />
+     
     </View>
   )
 }
@@ -61,8 +61,8 @@ export default function App() {
    
 
       <NavigationContainer ref={navigationRef}>
-        <Drawer.Navigator drawerContent={(props) => <Menu {...props} />}>
-        <Drawer.Screen name="Login" component={Login} />        
+        <Drawer.Navigator initialRouteName="Login" drawerContent={(props) => <Menu {...props} />}>
+          <Drawer.Screen name="Login" component={Login} />        
           <Drawer.Screen name="HomePage" component={HomePage} />
           <Drawer.Screen name="HeroCard" component={HeroCard} />
           <Drawer.Screen name="Comics" component={Comics} />
