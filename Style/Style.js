@@ -9,7 +9,7 @@ export default {
     marginTop: 10,
   },
   image: {
-    height: 720,
+    height: 800,
     width: 425,
     flex: 1,
     justifyContent: "center",

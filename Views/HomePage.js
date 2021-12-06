@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImageBackground, StyleSheet, Text } from "react-native";
 import s from "../Style/Style";
 import * as RootNavigation from "./RootNavigation";
+import axios from "axios";
 import {
   NativeBaseProvider,
   View,
@@ -14,9 +15,28 @@ import {
   Image,
 } from "native-base";
 
-function HomePage() {
-  const [input, setInput] = useState("");
+_GOOGLE_URL =
+  "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=";
 
+export default function HomePage(props) {
+  const [input, setInput] = useState("");
+  const [info, setInfo] = useState("");
+
+  let token = props.route.params.accessToken;
+
+  useEffect(() => {
+    const fetch = () => {
+      axios
+        .get(_GOOGLE_URL + token)
+        .then((response) => {
+          setInfo(response.data);
+        })
+        .catch((err) => console.log(err));
+     
+      };
+    fetch();
+  }, []);
+  console.log(info)
   return (
     <NativeBaseProvider>
       <View style={s.container}>
@@ -69,5 +89,3 @@ function HomePage() {
     </NativeBaseProvider>
   );
 }
-
-export default HomePage;

@@ -17,7 +17,7 @@ import * as Google from "expo-auth-session/providers/google";
 import HomePage from "./HomePage";
 import * as AuthSession from "expo-auth-session";
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId:
       "666050719355-lu03rb227b3ldbbgaercq4akem7g7cc3.apps.googleusercontent.com",
@@ -25,8 +25,10 @@ export default function Login() {
 
   useEffect(() => {
     if (response?.type === "success") {
-      console.log(response);
-      RootNavigation.navigate("HomePage", { auth: response.authentication });
+      RootNavigation.navigate("MenuDrawer", {
+        screen: "HomePage",
+        params: response.authentication,
+      });
     }
   }, [response]);
 
@@ -46,7 +48,6 @@ export default function Login() {
         </Box>
 
         <Box>
-         
           <Button
             style={s.buttonSingIn}
             title="Login"
@@ -60,7 +61,6 @@ export default function Login() {
             style={s.googleIcon}
             source={require("../assets/img/iconogoogle.png")}
             alt="Alternate Text"
-            
           />
         </Box>
       </ImageBackground>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ApiConsult from '../Service/ApiConsult'
+
 import axios from 'axios';
 import {
   Text,
@@ -14,7 +14,7 @@ import {
 
 
 
-export function HeroCard({ route }) {
+export default function HeroCard({ route }) {
 
   const nombre = `${route.params?.input}`;
     URL= `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${nombre}&ts=1&apikey=47133e255c6b14d78ebbc8188beb3815&hash=9cb5f40bfeb3aa1cc189b0de44b6460b`
